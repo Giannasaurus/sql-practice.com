@@ -42,3 +42,22 @@ SELECT
  CONCAT(first_name, ' ', last_name) AS full_name
 FROM patients
 ```
+
+Show first name, last name, and the full province name of each patient.
+
+Example: 'Ontario' instead of 'ON'
+```
+SELECT first_name, last_name, PN.province_name FROM patients
+JOIN province_names PN ON patients.province_id = PN.province_id
+```
+
+Show how many patients have a birth_date with 2010 as the birth year.
+```
+SELECT COUNT(*) as total_patients from patients
+WHERE YEAR(birth_date) = 2010
+```
+
+Show the first_name, last_name, and height of the patient with the greatest height.
+```
+SELECT first_name, last_name, MAX(height) as height from patients
+```
