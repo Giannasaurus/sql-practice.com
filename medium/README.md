@@ -5,15 +5,15 @@
 1. Show unique birth years from patients and order them by ascending.
 ```
 SELECT DISTINCT YEAR(birth_date) FROM patients
- ORDER BY YEAR(birth_date) ASC
+ORDER BY YEAR(birth_date) ASC
 ```
 
 2. Show unique first names from the patients table which only occurs once in the list.
 For example, if two or more people are named 'John' in the first_name column then don't include their name in the output list. If only 1 person is named 'Leo' then include them in the output.
 ```
 SELECT first_name FROM patients
- GROUP BY first_name
- HAVING COUNT(first_name) is 1
+GROUP BY first_name
+HAVING COUNT(first_name) is 1
 ```
 
 3. Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.
@@ -37,16 +37,16 @@ Order the list by the length of each name and then by alphabetically.
 ```
 SELECT first_name FROM patients
 ORDER BY
- LEN(first_name),
- first_name
+LEN(first_name),
+first_name
 ```
 
 6. Show the total amount of male patients and the total amount of female patients in the patients table.
 Display the two results in the same row.
 ```
 SELECT 
-  SUM(gender = 'M') as male_count, 
-  SUM(gender = 'F') AS female_count
+SUM(gender = 'M') as male_count, 
+SUM(gender = 'F') AS female_count
 FROM patients
 ```
 
@@ -139,8 +139,8 @@ HAVING MAX(admission_date)
 ```
 
 18. Show patient_id, attending_doctor_id, and diagnosis for admissions that match one of the two criteria:
-1. patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.
-2. attending_doctor_id contains a 2 and the length of patient_id is 3 characters.
+- patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.
+- attending_doctor_id contains a 2 and the length of patient_id is 3 characters.
 ```
 SELECT patient_id, attending_doctor_id, diagnosis FROM admissions
 WHERE (patient_id % 2 != 0 AND attending_doctor_id IN (1, 5, 19))
@@ -222,8 +222,8 @@ SELECT MAX(number_of_visits) AS max_visits,
 MIN(number_of_visits) AS min_visits,
 ROUND(AVG(number_of_visits), 2) AS average_visits
 FROM (SELECT admission_date, COUNT(*) AS number_of_visits
-      FROM admissions
-      GROUP BY admission_date)
+  FROM admissions
+  GROUP BY admission_date)
 ```
 
 27. Display every patient that has at least one admission and show their most recent admission along with the patient and doctor's full name.
